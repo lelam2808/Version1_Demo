@@ -112,7 +112,17 @@ public class register extends AppCompatActivity {
                             user.put("email", email);
                             user.put("phone", phone);
                             user.put("password",password);
-
+                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d(TAG, "onSuccess: user Profile is created for " + userID);
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.d(TAG, "onFailure: " + e.toString());
+                                }
+                            });
                             startActivity(new Intent(getApplicationContext(), login.class));
                             finish();
 
@@ -124,7 +134,13 @@ public class register extends AppCompatActivity {
                 });
             }
         });
-
+        txtLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it2=new Intent(register.this, login.class);
+                startActivity(it2);
+            }
+        });
 
 
     }
