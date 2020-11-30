@@ -104,7 +104,14 @@ public class register extends AppCompatActivity {
                                 }
                             });
 
-
+                            Toast.makeText(register.this, "User Created.", Toast.LENGTH_SHORT).show();
+                            userID = fAuth.getCurrentUser().getUid();
+                            DocumentReference documentReference = fStore.collection("users").document(userID);
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("fName", fullName);
+                            user.put("email", email);
+                            user.put("phone", phone);
+                            user.put("password",password);
 
                             startActivity(new Intent(getApplicationContext(), login.class));
                             finish();
