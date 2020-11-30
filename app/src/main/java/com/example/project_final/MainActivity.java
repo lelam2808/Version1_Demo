@@ -29,7 +29,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     // lam
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity  {
 
         toggle.setDrawerIndicatorEnabled(true);
         toggle.syncState();
-        //navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
 
         // hien thi email khi dang nhap vao
@@ -100,5 +100,31 @@ public class MainActivity extends AppCompatActivity  {
         }
     }
     // chon trong nav
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.nav_home: {
+                Toast.makeText(this,"MAN HINH HOME",Toast.LENGTH_SHORT).show();
+                break;
+            }
+            case R.id.nav_home1:
+            {
+                Toast.makeText(this,"MAN HINH NOI DUNG",Toast.LENGTH_SHORT).show();
+
+            }
+            case R.id.logout:
+            {
+                Toast.makeText(this,"LOGOUT",Toast.LENGTH_SHORT).show();
+                FirebaseAuth.getInstance().signOut();;
+                Intent itLogin=new Intent(getApplicationContext(), login.class);
+                startActivity(itLogin);
+            }
+            default:
+                break;
+        }
+        return true;
+    }
+
 
 }
