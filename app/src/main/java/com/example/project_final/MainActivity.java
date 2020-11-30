@@ -29,7 +29,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DialogCloseListener, SearchView.OnQueryTextListener {
+public class MainActivity extends AppCompatActivity  {
     // lam
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -54,14 +54,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.nav_toolbar);
-        searchView=findViewById(R.id.searchView);
-        searchView.setOnQueryTextListener(this);
-       try {
-           set_email=findViewById(R.id.dc_eml);
-       }catch (Exception e)
-       {
-           Log.d("ktemail",e.getMessage());
-       }
+        searchView = findViewById(R.id.searchView);
+       // searchView.setOnQueryTextListener(this);
+        try {
+            set_email = findViewById(R.id.dc_eml);
+        } catch (Exception e) {
+            Log.d("ktemail", e.getMessage());
+        }
         // toolbar
 
         setSupportActionBar(toolbar);
@@ -72,69 +71,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         toggle.setDrawerIndicatorEnabled(true);
         toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+        //navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
 
         // hien thi email khi dang nhap vao
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser!=null)
-        {
+        if (currentUser != null) {
             try {
-                Toast.makeText(this,""+currentUser.getEmail(),Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "" + currentUser.getEmail(), Toast.LENGTH_LONG).show();
                 set_email.setText(currentUser.getEmail().toString());
-            }catch (Exception e)
-            {
-                Log.d("tenemail",e.getMessage());
+            } catch (Exception e) {
+                Log.d("tenemail", e.getMessage());
             }
 
         }
-
-        // hung
-        //open databse
-        dbDatabase = new Database(this);
-        dbDatabase.openDatabase();
-
-        //new mảng
-        taskList = new ArrayList<>();
-        taskList.addAll(dbDatabase.getAllTasks());
-        Collections.reverse(taskList);
-
-        //tạo reyclerview
-        recyclerView = findViewById(R.id.taskRecycleView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        //set adapter
-        tasksAdapter = new TodoAdapter(taskList, this, dbDatabase);
-        recyclerView.setAdapter(tasksAdapter);
-        //add csdl vào recylerview
-
-        fab = findViewById(R.id.fab_home);
-
-        ItemTouchHelper itemTouchHelper = new
-                ItemTouchHelper(new RecyclerItemTouchHelper(tasksAdapter));
-        itemTouchHelper.attachToRecyclerView(recyclerView);
-        //thêm công việc
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AddNewTask.newInstance().show(getSupportFragmentManager(), AddNewTask.TAG);
-            }
-        });
     }
-
-    //xử lí sự kiện đóng hộp thoại
-    @Override
-    public void handleDialogClose(DialogInterface dialogInterface) {
-        taskList = dbDatabase.getAllTasks();
-        Collections.reverse(taskList);
-        ArrayList<Todo> task = dbDatabase.getAllTasks();
-        if (task.size() != taskList.size())
-            startActivity(getIntent());
-        else {
-            tasksAdapter.setTasks(taskList);
-        }
-    }
-
     // keo de mo thanh nav
     @Override
     public void onBackPressed() {
@@ -148,42 +100,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
     // chon trong nav
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId())
-        {
-            case R.id.nav_home: {
-                Toast.makeText(this,"MAN HINH HOME",Toast.LENGTH_SHORT).show();
-                break;
-            }
-            case R.id.nav_home1:
-            {
-                Toast.makeText(this,"MAN HINH NOI DUNG",Toast.LENGTH_SHORT).show();
 
-            }
-            case R.id.logout:
-            {
-                Toast.makeText(this,"LOGOUT",Toast.LENGTH_SHORT).show();
-                FirebaseAuth.getInstance().signOut();;
-                Intent itLogin=new Intent(getApplicationContext(), login.class);
-                startActivity(itLogin);
-            }
-            default:
-                break;
-        }
-        return true;
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        //tasksAdapter.getFilter().filter(query);
-        return true;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        tasksAdapter.getFilter().filter(newText);
-        return false;
-
-    }
 }
