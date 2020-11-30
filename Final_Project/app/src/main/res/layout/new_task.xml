@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#85E6E6EA">
+
+    <EditText
+        android:id="@+id/edtNewTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="20dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:hint="Play with my lover"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtNewTask"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="10dp"
+        android:background="#259BFA"
+        android:text="Select time"
+        android:textColor="#252323"
+        android:textSize="16sp"
+        app:backgroundTint="@color/green" />
+
+    <Button
+        android:id="@+id/btn_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_time"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="10dp"
+        android:background="#259BFA"
+        android:text="Select date"
+        android:textColor="#252323"
+        android:textSize="16sp"
+        app:backgroundTint="@color/green" />
+
+    <Button
+        android:id="@+id/btnNewTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_below="@id/btn_date"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimary"
+        android:text="Save"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/green" />
+
+
+</RelativeLayout>
