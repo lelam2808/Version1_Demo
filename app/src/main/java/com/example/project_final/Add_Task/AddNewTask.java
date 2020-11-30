@@ -266,6 +266,7 @@ public class AddNewTask extends DialogFragment {
         datePickerDialog.show();
     }
 
+    //Mở google mic
     private void speak() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
@@ -303,7 +304,8 @@ public class AddNewTask extends DialogFragment {
             }
         }
     }
-
+    
+    //Tạo đường dẫn chưa file trained
     private void prepareLanguageDir() throws IOException {
         File dir = new File(DATA_PATH + "/tessdata");
         if (!dir.exists()) {
@@ -330,7 +332,8 @@ public class AddNewTask extends DialogFragment {
         os.flush();
         os.close();
     }
-
+    
+    //Mở camera và tạo file ảnh để nhận diện
     private void initImageView() {
 
         try {
