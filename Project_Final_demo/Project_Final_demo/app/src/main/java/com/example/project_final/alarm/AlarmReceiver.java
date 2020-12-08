@@ -13,7 +13,7 @@ import com.example.project_final.R;
 public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d("toi","xin chao");
+           Log.d("toi","xin chao");
         
         MediaPlayer mediaPlayer;
         mediaPlayer= MediaPlayer.create(context, R.raw.baothuc);
