@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    >
+
+    <TextView
+        android:id="@+id/txtTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/architects_daughter"
+        android:gravity="center_horizontal"
+        android:text="List Successful Tasks"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="32sp" />
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchViewSuccess"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtTask"
+        android:hint="Nhập vào từ cần tìm kiếm">
+
+
+    </androidx.appcompat.widget.SearchView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/taskRecycleViewSuceess"
+        android:layout_width="match_parent"
+        android:layout_height="640dp"
+        android:layout_below="@id/searchViewSuccess"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+
+</RelativeLayout>

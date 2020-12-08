@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item  android:title="My App">
+            <menu>
+                <item
+                    android:id="@+id/nav_home"
+                    android:title="Home"
+                    android:icon="@drawable/ic_baseline_home_24"
+
+                    />
+                <item
+                    android:id="@+id/nav_comple"
+                    android:title="Works Complete"
+                    android:icon="@drawable/ic_complete"
+                    />
+                <item
+                    android:id="@+id/nav_alarm"
+                    android:title="UnFinished"
+                    android:icon="@drawable/ic_chuaphoanthanh"
+                    />
+                <item
+                    android:id="@+id/nav_calendar"
+                    android:title="Calendar"
+                    android:icon="@drawable/ic_baseline_calendar_today_24"
+                    />
+                    </menu>
+        </item>
+    </group>
+    <group android:checkableBehavior="single">
+        <item  android:title="Profile">
+                <menu>
+
+                    <item
+                        android:id="@+id/persinal"
+                        android:title="Profile Personal"
+                        android:icon="@drawable/ic_baseline_home_24"
+
+                        />
+                    <item
+                        android:id="@+id/logout"
+                        android:title="Logout"
+                        android:icon="@drawable/ic_reply"
+                        />
+                </menu>
+
+        </item>
+    </group>
+    <item android:title="Communicate">
+        <menu>
+           <item
+               android:id="@+id/share"
+               android:icon="@drawable/ic_baseline_share_24"
+               android:title="Share"
+               />
+            <item
+                android:id="@+id/infor"
+                android:icon="@drawable/ic_baseline_info_24"
+                android:title="Infor My Team"
+                />
+        </menu>
+
+    </item>
+</menu>
