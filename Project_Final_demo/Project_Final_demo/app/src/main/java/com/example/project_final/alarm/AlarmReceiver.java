@@ -16,7 +16,7 @@ public class AlarmReceiver extends BroadcastReceiver {
            Log.d("toi","xin chao");
         
         MediaPlayer mediaPlayer;
-        mediaPlayer= MediaPlayer.create(context, R.raw.baothuc);
+        mediaPlayer= MediaPlayer.create(context, R.baothuc);
         mediaPlayer.start();
 
     }
