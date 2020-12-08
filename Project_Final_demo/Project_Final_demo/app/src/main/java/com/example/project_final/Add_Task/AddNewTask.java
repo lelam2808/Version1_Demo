@@ -214,6 +214,7 @@ public class AddNewTask extends DialogFragment {
             final Calendar c = Calendar.getInstance();
             this.lastSelectedHour = c.get(Calendar.HOUR_OF_DAY);
             this.lastSelectedMinute = c.get(Calendar.MINUTE);
+            
         }
 
         // Time Set Listener.
@@ -224,6 +225,22 @@ public class AddNewTask extends DialogFragment {
                 btnTime.setText(hourOfDay + ":" + minute );
                 lastSelectedHour = hourOfDay;
                 lastSelectedMinute = minute;
+                  btnTime.setText(hourOfDay + ":" + minute );
+                lastSelectedHour = hourOfDay;
+                lastSelectedMinute = minute;
+                Calendar c=Calendar.getInstance();
+                c.set(Calendar.HOUR_OF_DAY,hourOfDay);
+                c.set(Calendar.MINUTE,minute);
+                c.set(Calendar.YEAR,y);
+                c.set(Calendar.MONTH,m);
+                c.set(Calendar.DAY_OF_MONTH,d);
+                AlarmManager alarmManager;
+                final  Intent intent=new Intent(getActivity(), AlarmReceiver.class);
+                alarmManager=(AlarmManager)getActivity().getSystemService(ALARM_SERVICE);
+                PendingIntent pendingIntent= PendingIntent.getBroadcast(
+                        getActivity(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT );
+
+                alarmManager.set(AlarmManager.RTC_WAKEUP,c.getTimeInMillis(),pendingIntent);
             }
         };
 
@@ -236,7 +253,7 @@ public class AddNewTask extends DialogFragment {
         // Show
         timePickerDialog.show();
     }
-
+    int y,m,d;
     private void buttonSelectDate() {
         if (lastSelectedYear == -1){
             final Calendar c = Calendar.getInstance();
@@ -257,6 +274,9 @@ public class AddNewTask extends DialogFragment {
                 lastSelectedYear = year;
                 lastSelectedMonth = monthOfYear;
                 lastSelectedDayOfMonth = dayOfMonth;
+                y=year;
+                m=monthOfYear;
+                d=dayOfMonth;
             }
         };
 
