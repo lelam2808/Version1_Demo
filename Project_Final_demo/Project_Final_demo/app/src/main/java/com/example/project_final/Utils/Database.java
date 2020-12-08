@@ -96,4 +96,20 @@ public class Database extends SQLiteOpenHelper {
         }
         return taskList;
     }
+    public ArrayList<Todo> getStatus() {
+        ArrayList<Todo> taskList = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM todo where status =1", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Todo task = new Todo();
+            task.setId(cursor.getInt(cursor.getColumnIndex(ID)));
+            task.setTask(cursor.getString(cursor.getColumnIndex(TASK)));
+            task.setStatus(cursor.getInt(cursor.getColumnIndex(STATUS)));
+            task.setDeadline(cursor.getString(cursor.getColumnIndex(DEADLINE)));
+            taskList.add(task);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return taskList;
+    }
 }
