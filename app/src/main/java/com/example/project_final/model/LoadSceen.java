@@ -11,7 +11,6 @@ import com.example.project_final.R;
 
 public class LoadSceen extends AppCompatActivity {
     private static  int SPLAT_TIME_OUT=2000;
-    private int x=20;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
