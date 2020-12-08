@@ -24,7 +24,13 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".model.register" />
         <activity android:name=".model.login"></activity>
-
+        <receiver android:name=".Alarm.AlarmReceiver"/>
+        <activity android:name=".model.register" />
+        <activity android:name=".model.login" />
+      
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
